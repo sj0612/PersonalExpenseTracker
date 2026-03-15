@@ -1,6 +1,7 @@
 package com.petracker.framework.repository;
 
 import com.petracker.framework.models.Entry;
+import com.petracker.framework.models.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +18,8 @@ public interface EntryRepository extends JpaRepository<Entry,Long> {
     Page<Entry> findByUserId(@Param("userId") Long userId, Pageable pageable);
 
     Optional<Entry> findById(Long entryId);
+
+    boolean existsByUserAndRemarks(User user, String remarks);
 
     void deleteById(Long entryID);
 }

@@ -2,11 +2,27 @@ package com.petracker.framework.dto;
 
 import com.petracker.framework.models.PaymentMode;
 import com.petracker.framework.models.TransactionType;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Entry details returned from the API")
 public class EntryGetDTO {
+    @Schema(description = "Unique identifier of the entry", example = "42")
     private Long entryId;
+
+    @Schema(description = "Transaction amount", example = "250.00")
     private Float amount;
+
+    @Schema(description = "Optional remarks or notes", example = "Groceries from supermarket")
     private String remarks;
+
+    @Schema(description = "Mode of payment", example = "CARD")
+    private PaymentMode modeOfPayment;
+
+    @Schema(description = "Type of transaction", example = "DEBIT")
+    private TransactionType type;
+
+    @Schema(description = "Unix timestamp when the entry was added", example = "1710489600000")
+    private long added_Time;
 
     public Long getEntryId() {
         return entryId;
@@ -56,9 +72,6 @@ public class EntryGetDTO {
         return added_Time;
     }
 
-    private PaymentMode modeOfPayment;
-    private TransactionType type;
-
     @Override
     public String toString() {
         return "EntryGetDTO{" +
@@ -70,6 +83,4 @@ public class EntryGetDTO {
                 ", added_Time=" + added_Time +
                 '}';
     }
-
-    private long added_Time;
 }
